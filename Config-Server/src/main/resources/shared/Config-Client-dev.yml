@@ -1,0 +1,4 @@
+server:
+  prot: 8200
+
+foo: foo version is v1

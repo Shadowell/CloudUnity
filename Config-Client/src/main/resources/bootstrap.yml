@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: Config-Client
+
+  cloud:
+    config:
+     uri: http://localhost:8100
+     fail-fast: true
+
+  profiles:
+    active: dev
