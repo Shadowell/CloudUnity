@@ -1,0 +1,16 @@
+server:
+  #本服务的监听端口，一般无需修改
+  port: 8734
+
+eureka:
+  instance:
+    # 本服务所在的主机，一般无需修改
+    hostname: localhost
+  client:
+    # 是否将本服务注册到Eureka中，默认为false
+    registerWithEureka: false
+    # 是否获取Eureka上的注册列表信息
+    fetchRegistry: true
+    # 本服务的地址
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

@@ -1,4 +1,5 @@
 server:
-  prot: 8200
+  port: 8200
 
-foo: foo version is v1
+foo: Get the foo version is v1
+name: fengj

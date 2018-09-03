@@ -1,5 +1,6 @@
 server:
   port: 8100
+
 spring:
   cloud:
     config:
@@ -10,4 +11,4 @@ spring:
     active: native
 
   application:
-    name: config-server
+    name: Config-Server
