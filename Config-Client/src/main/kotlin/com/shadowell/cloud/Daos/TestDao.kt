@@ -1,6 +1,7 @@
 package com.shadowell.cloud.Daos
 
-import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration
+import com.shadowell.cloud.Models.TestDataModel
+import org.springframework.data.jpa.repository.JpaRepository
 
 interface TestDao: JpaRepository <TestDataModel, String> {
 

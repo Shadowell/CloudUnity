@@ -1,6 +1,6 @@
 server:
   #本服务的监听端口，一般无需修改
-  port: 8734
+  port: 8000
 
 eureka:
   instance:

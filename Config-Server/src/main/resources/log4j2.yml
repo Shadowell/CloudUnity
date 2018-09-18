@@ -41,7 +41,7 @@ Configuration:
       # 日志级别
       level: info
       AppenderRef:
-        - ref: CONSOLE
+        #- ref: CONSOLE
         # 日志输出到文件
-        #- ref: ROLLING_FILE
+        - ref: ROLLING_FILE
 
