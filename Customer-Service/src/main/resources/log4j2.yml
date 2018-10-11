@@ -1,0 +1,47 @@
+Configuration:
+  status: info
+
+  Properties:
+    Property:
+      - name: log.path
+        value: /usr/noops/log/${project.name}
+      - name: project.name
+        value: customer-service
+
+  Appenders:
+     # output to console
+    Console:
+      - name: CONSOLE
+        target: SYSTEM_OUT
+        ThresholdFilter:
+          level: info
+          onMatch: ACCEPT
+          onMismatch: DENY
+        PatternLayout:
+          pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p %t (%F:%L) - %m%n"
+
+    # output to file
+    RollingFile:
+      - name: ROLLING_FILE
+        ignoreExceptions: false
+        fileName: ${log.path}/${project.name}.log
+        filePattern: "${log.path}/${date:yyyy-MM}/${project.name}-%d{yyyy-MM-dd}-%i.log"
+        PatternLayout:
+          pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p %t (%F:%L) - %m%n"
+        Policies:
+          TimeBasedTriggeringPolicy:
+            interval: "1"
+          SizeBasedTriggeringPolicy:
+            size: "128MB"
+        DefaultRolloverStrategy:
+          max: 1000
+
+  Loggers:
+    Root:
+      # 日志级别
+      level: info
+      AppenderRef:
+        - ref: CONSOLE
+        # 日志输出到文件
+        #- ref: ROLLING_FILE
+

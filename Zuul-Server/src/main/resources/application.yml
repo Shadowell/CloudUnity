@@ -1,0 +1,27 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
+server:
+  port: 8100
+
+spring:
+  application:
+    name: Zuul-Server
+
+zuul:
+  routes:
+    configApi:
+      path: /config/**
+      serviceId: Config-Servce
+
+    productApi:
+      path: /product/**
+      serviceId: Product-Service
+
+    customerApi:
+      path: /customer/**
+      serviceId: Customer-Service
+
+  prefix: /zuul
