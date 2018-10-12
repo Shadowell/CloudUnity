@@ -1,7 +1,7 @@
 package com.shadowell.cloud.productService.Services
 
 //import com.shadowell.cloud.productService.Daos.ProductDao
-import com.shadowell.cloud.productService.Models.ProductEntity
+//import com.shadowell.cloud.productService.Models.ProductEntity
 import com.shadowell.cloud.productService.Models.ProductModel
 import com.shadowell.cloud.productService.Utils.Result
 import org.springframework.beans.factory.annotation.Autowired

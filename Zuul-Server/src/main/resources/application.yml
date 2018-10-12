@@ -11,17 +11,17 @@ spring:
     name: Zuul-Server
 
 zuul:
+  #servlet-path: /
   routes:
     configApi:
-      path: /config/**
-      serviceId: Config-Servce
+      path: /configApi/**
+      serviceId: config-server
 
     productApi:
-      path: /product/**
-      serviceId: Product-Service
+      path: /productApi/**
+      serviceId: product-service
 
     customerApi:
       path: /customer/**
-      serviceId: Customer-Service
+      serviceId: customer-service
 
-  prefix: /zuul

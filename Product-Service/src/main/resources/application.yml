@@ -3,11 +3,11 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8000/eureka/
 server:
-  port: 8400
+  port: 8600
 
 spring:
   application:
-    name: Product-Service
+    name: product-service
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
