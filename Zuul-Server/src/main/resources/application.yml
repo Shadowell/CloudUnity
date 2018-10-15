@@ -11,7 +11,6 @@ spring:
     name: Zuul-Server
 
 zuul:
-  #servlet-path: /
   routes:
     configApi:
       path: /configApi/**
@@ -22,6 +21,6 @@ zuul:
       serviceId: product-service
 
     customerApi:
-      path: /customer/**
+      path: /customerApi/**
       serviceId: customer-service
 
