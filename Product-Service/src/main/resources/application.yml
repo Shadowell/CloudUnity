@@ -1,0 +1,39 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+server:
+  port: 8400
+
+spring:
+  application:
+    name: product-service
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.98.225.183:3306/datiip?useUnicode=true&useSSL=false
+    username: datiip
+    password: datiip
+
+    dbcp2:
+      initial-size: 5
+      min-idle: 5
+      max-wait-millis: 60000
+      max-total: 30
+      time-between-eviction-runs-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+
+  # jpa 配置
+  jpa:
+    database: mysql
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+
+

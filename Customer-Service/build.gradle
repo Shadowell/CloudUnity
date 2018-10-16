@@ -31,15 +31,12 @@ dependencyManagement {
 	dependencies {
 		dependency "org.springframework.cloud:spring-cloud-starter-eureka:$springCloudComponentsVersion"
 		dependency "org.springframework.cloud:spring-cloud-starter-feign:$springCloudComponentsVersion"
+		dependency "org.springframework.cloud:spring-cloud-starter-zuul:$springCloudComponentsVersion"
 		dependency "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 		dependency "com.oracle:ojdbc6:$ojdbcVersion"
 		dependency "com.springframework.boot:spring-boot-starter-log4j2:$springBootVersion"
 		dependency "com.fasterxml.jackson.core:jackson-databind:$fasterxmlVersion"
 		dependency "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$fasterxmlVersion"
-		dependency "org.springframework.cloud:spring-cloud-starter-config:$springCloudComponentsVersion"
-		dependency "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
-
-
 	}
 }
 configurations {
@@ -47,16 +44,15 @@ configurations {
 }
 
 dependencies {
-	compile ('org.springframework.boot:spring-boot-starter-web')
+	compile 'org.springframework.boot:spring-boot-starter-web'
 	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 	compile 'com.fasterxml.jackson.module:jackson-module-kotlin'
 	compile 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
 	compile 'org.jetbrains.kotlin:kotlin-reflect'
 	compile 'com.oracle:ojdbc6'
 	compile 'org.springframework.cloud:spring-cloud-starter-eureka'
-	//compile 'org.springframework.cloud:spring-cloud-starter-config'
-	compile 'org.springframework.boot:spring-boot-starter-actuator'
 	compile 'org.springframework.cloud:spring-cloud-starter-feign'
+	compile 'org.springframework.cloud:spring-cloud-starter-zuul'
 	compile 'org.springframework.boot:spring-boot-starter-log4j2'
 	compile 'com.fasterxml.jackson.core:jackson-databind'
 	compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml'
