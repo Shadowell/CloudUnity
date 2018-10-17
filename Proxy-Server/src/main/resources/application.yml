@@ -1,0 +1,32 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
+server:
+  port: 8600
+
+spring:
+  application:
+      name: Proxy-Server
+
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    #url: jdbc:oracle:thin:@192.192.188.130:1521/test
+    url: jdbc:oracle:thin:@127.0.0.1:1521/orcl
+    username: datiip
+    password: datiip
+    hikari:
+      maximum-pool-size: 30
+
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  thymeleaf:
+    mode: HTML5
+    encoding: utf-8
+    cache: false
+
