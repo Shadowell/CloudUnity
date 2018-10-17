@@ -3,3 +3,4 @@ server:
 
 foo: Get the foo version is v1
 name: fengj
+test: this is a test for config server
