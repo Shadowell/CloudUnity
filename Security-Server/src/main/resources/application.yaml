@@ -1,0 +1,81 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
+server:
+  port: 8200
+
+spring:
+  application:
+      name: Security-Server
+
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    #url: jdbc:oracle:thin:@192.192.188.130:1521/test
+    url: jdbc:oracle:thin:@127.0.0.1:1521/orcl
+    username: datiip
+    password: datiip
+    hikari:
+      maximum-pool-size: 30
+
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  thymeleaf:
+    mode: HTML5
+    encoding: utf-8
+    cache: false
+
+# JWT 认证配置
+jwt:
+  header: Authorization
+  secret: mySecret
+  expiration: 10 # token的过期时间 /s
+  tokenHead: "Bearer "
+  route:
+    authentication:
+      path: /auth/login
+      refresh: /auth/refresh
+      register: auth/register
+
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://47.98.225.183:3306/datiip?useUnicode=true&useSSL=false
+#    username: datiip
+#    password: datiip
+#
+#    dbcp2:
+#      initial-size: 5
+#      min-idle: 5
+#      max-wait-millis: 60000
+#      max-total: 30
+#      time-between-eviction-runs-millis: 300000
+#      validation-query: SELECT 1 FROM DUAL
+#      test-while-idle: true
+#      test-on-borrow: false
+#      test-on-return: false
+#      pool-prepared-statements: true
+#      max-open-prepared-statements: 20
+
+# jpa 配置
+#  jpa:
+#    database: mysql
+#    show-sql: true
+#    generate-ddl: true
+#    hibernate:
+#      ddl-aut: update
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+参考：https://www.jianshu.com/p/6307c89fe3fa/
+
+JWT本身没啥难度，但安全整体是一个比较复杂的事情，JWT只不过提供了一种基于token的请求验证机制。
+但我们的用户权限，对于API的权限划分、资源的权限划分，用户的验证等等都不是JWT负责的。
+也就是说，请求验证后，你是否有权限看对应的内容是由你的用户角色决定的。
+所以我们这里要利用Spring的一个子项目Spring Security来简化我们的工作。
+
+@Data
+public class User {
+    @Id
+    private String id;
+
+    @Indexed(unique=true, direction= IndexDirection.DESCENDING, dropDups=true)
+    private String username;
+
+    private String password;
+    private String email;
+    private Date lastPasswordResetDate;
+    private List<String> roles;
+}
+当然你可能发现这个类有点怪，只有一些field，这个简化的能力是一个叫lombok类库提供的 ，
+这个很多开发过Android的童鞋应该熟悉，是用来简化POJO的创建的一个类库。简单说一下，
+采用 lombok 提供的 @Data 修饰符后可以简写成，原来的一坨getter和setter以及constructor等都不需要写了。
+
+增加这个类库只需在 build.gradle 中增加下面这行:
+    dependencies {
+        // 省略其它依赖
+        compile("org.projectlombok:lombok:${lombokVersion}")
+    }
+引入Spring Security
+
+要在Spring Boot中引入Spring Security非常简单，修改 build.gradle，增加一个引用 org.springframework.boot:spring-boot-starter-security：
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("io.jsonwebtoken:jjwt:${jjwtVersion}")
+    compile("org.projectlombok:lombok:${lombokVersion}")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+Spring Security需要我们实现几个东西，第一个是UserDetails:
+这个接口中规定了用户的几个必须要有的方法，所以我们创建一个JwtUser类来实现这个接口。
+为什么不直接使用User类？因为这个UserDetails完全是为了安全服务的，它和我们的领域类可能
+有部分属性重叠，但很多的接口其实是安全定制的，所以最好新建一个类
+
