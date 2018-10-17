@@ -1,4 +1,4 @@
-package com.shadowell.cloud
+package com.shadowell.cloud.configServer
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
