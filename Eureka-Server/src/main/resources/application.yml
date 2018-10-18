@@ -4,7 +4,7 @@ server:
 
 eureka:
   instance:
-    # 本服务所在的主机，一般无需修改
+    # 本服务所在的主机名称
     hostname: localhost
   client:
     # 是否将本服务注册到Eureka中，默认为false

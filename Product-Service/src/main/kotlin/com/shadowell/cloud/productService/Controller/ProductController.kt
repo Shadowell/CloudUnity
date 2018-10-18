@@ -31,12 +31,12 @@ class ProductController (@Autowired var productService: ProductService) {
         return productService.addProduct(productModel)
     }
 
-//    @RequestMapping(value = ["/{id}"],method = [RequestMethod.GET])
-//    @ResponseBody
-//    fun getProductById(@PathVariable id: String): Optional<ProductEntity> {
-//        logger.info("Get product by id $id".format(id))
-//        return productService.getProductById(id)
-//    }
+    @RequestMapping(value = ["/{id}"],method = [RequestMethod.GET])
+    @ResponseBody
+    fun getProductById(@PathVariable id: String): ProductModel {
+        logger.info("Get product by id $id".format(id))
+        return productService.getProductById(id)
+    }
 
     @RequestMapping(value = ["/{id}"],method = [RequestMethod.DELETE])
     @ResponseBody

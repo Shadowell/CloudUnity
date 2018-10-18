@@ -4,7 +4,7 @@
 //import org.springframework.data.jpa.repository.JpaRepository
 //import org.springframework.data.jpa.repository.Query
 //import java.util.*
-//
+//@Repository
 //interface ProductDao: JpaRepository <ProductEntity, String> {
 //
 //    @Query(value = "select product from ProductEntity product where id = ?1")

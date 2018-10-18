@@ -29,10 +29,9 @@ class ProductService @Autowired constructor(/**private var productDao: ProductDa
         return Result.SUCCESS
     }
 
-//    fun getProductById(id: String): Optional<ProductEntity> {
-//        return productDao.findProductById(id)
-//        return Optional<ProductEntity>()
-//    }
+    fun getProductById(id: String): ProductModel {
+        return ProductModel("1","apple",2)
+    }
 
     fun deleteProduct(id: String): Result {
 //        val target = productDao.findProductById(id)
@@ -40,7 +39,7 @@ class ProductService @Autowired constructor(/**private var productDao: ProductDa
 //            return Result.NOT_FOUNT
 //        }
 //        productDao.deleteById(id)
-        return Result.SUCCESS
+        return Result.NOT_FOUNT
     }
 
 }

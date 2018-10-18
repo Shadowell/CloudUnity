@@ -15,7 +15,8 @@ subprojects {
         kotlinVersion = '1.2.20'
         ojdbcVersion = '11.2.0.4'
         mysqlVersion = '5.1.45'
-        jsonwebtokenVersion =  '0.9.0'
+        jsonwebtokenVersion = '0.9.0'
+        lombokVersion = '1.18.0'
     }
 
     buildscript {

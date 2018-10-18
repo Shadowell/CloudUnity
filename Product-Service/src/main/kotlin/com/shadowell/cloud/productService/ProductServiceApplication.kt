@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 @SpringBootApplication
 @RestController
 @EnableEurekaClient
-class ProductServiceApplication
+open class ProductServiceApplication
 
 fun main(args: Array<String>) {
     runApplication<ProductServiceApplication>(*args)
