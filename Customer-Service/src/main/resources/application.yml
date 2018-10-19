@@ -1,0 +1,25 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
+server:
+  port: 8500
+
+spring:
+  application:
+    name: customer-service
+
+feign:
+  hystrix:
+    enabled: true
+
+## Hystrix的配置
+#hystrix:
+#  commond:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            # 断路器超时时间
+#            timeoutInMilliseconds: 2000

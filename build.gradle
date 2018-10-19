@@ -17,6 +17,7 @@ subprojects {
         mysqlVersion = '5.1.45'
         jsonwebtokenVersion = '0.9.0'
         lombokVersion = '1.18.0'
+        junitVersion = '4.8.2'
     }
 
     buildscript {
