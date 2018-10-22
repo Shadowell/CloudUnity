@@ -13,7 +13,7 @@ class ConfigController {
 
     @RequestMapping(value = ["/name"],method = [RequestMethod.GET])
     fun getConfig(): String{
-        return name
+        return "----------------$name"
     }
 
 }

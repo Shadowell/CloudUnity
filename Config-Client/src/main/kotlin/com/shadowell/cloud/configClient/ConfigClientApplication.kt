@@ -12,4 +12,5 @@ open class ConfigClientApplication
 
 fun main(args: Array<String>) {
     runApplication<ConfigClientApplication>(*args)
+
 }

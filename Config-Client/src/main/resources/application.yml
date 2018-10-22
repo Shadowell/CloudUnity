@@ -1,19 +1,23 @@
-#eureka:
-#  client:
-#    serviceUrl:
-#      defaultZone: http://localhost:8000/eureka/
-#
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
 #server:
 #  port: 8200
-#
-#spring:
-#  application:
-#    name: Config-Client
-#
-#  cloud:
-#    config:
-#     uri: http://localhost:8300
-#     fail-fast: true
-#
-#  profiles:
-#    active: dev
+
+spring:
+  application:
+    name: config-client
+
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+      #uri: http://localhost:8300/
+      fail-fast: true
+      name: config-client
+      profile: dev
+
+
