@@ -61,7 +61,7 @@ dependencies {
 	compile 'org.jetbrains.kotlin:kotlin-reflect'
 	compile 'com.oracle:ojdbc6'
     compile 'mysql:mysql-connector-java'
-	//compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+	compile 'org.springframework.cloud:spring-cloud-starter-eureka'
     compile 'org.springframework.cloud:spring-cloud-starter-oauth2'
 	compile 'org.springframework.boot:spring-boot-starter-actuator'
 	compile 'org.springframework.boot:spring-boot-starter-security'

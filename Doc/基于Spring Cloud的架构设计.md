@@ -482,6 +482,106 @@ FeignClient不支持异步调用，需要做异步调用需要使用异步的HTT
 
 ## 7. 配置中心
 
+Spring Cloud 提供了Config来进行配置文件的管理，其有如下几种方式：
+
+* 基于*.yml/*.properties
+
+    配置中心（config-server）的applications.yml如下：
+            
+        ```
+            spring:
+              application:
+                name: config-server
+              cloud:
+                config:
+                  server:
+                    git:
+                      uri: https://github.com/ityouknow/spring-cloud-starter/     # 配置git仓库的地址
+                      search-paths: config-repo                             # git仓库地址下的相对地址，可以配置多个，用,分割。
+                      username: username                                        # git仓库的账号
+                      password: password    
+
+        ```
+
+    此方式只能通过{applications}-{profile}.yml/properties定义的格式读取配置文件,config-client通过配置bootstrap.yml来配置config-server中心的地址，
+    在config-client启动时加载bootstrap.yml来读取config-server中的对应的配置文件，每个客户端需要配置bootstrap.yml文件
+    
+    boostrap.yml
+    
+    ```
+        eureka:
+          client:
+            serviceUrl:
+              defaultZone: http://localhost:8000/eureka/
+        
+        server:
+          port: 8200
+        
+        spring:
+          application:
+            name: config-client
+        
+          cloud:
+            config:
+              discovery:
+                enabled: true
+                service-id: config-server
+              #uri: http://localhost:8300/
+              #fail-fast: true
+              name: config-client
+              profile: dev
+    ```
+    
+    该配置文件指定了当前的config-client会从config-server指定的searchLocations配置的目录下读取{application.name}-{profile}.yml
+    的文件，如：config-clien-dev.yml
+    
+    - 基于Git/SVN的配置文件管理
+    
+        将配置文件放到仓库，可以通过git仓库的webhook功能在每天提交时，刷新对应的配置文件，并依次调用
+        各个config-client来刷新配置
+        
+        ```
+            POST http://config-client:port/bus/refresh 
+        ```
+        对于有多个客户端，需要多次刷新接口来刷新配置，并不优雅。
+        可通过一条消息总线来完成整个配置文件的刷新，架构图如下：
+        
+        ![image](file:///E:\CloudProject\CloudUnity\Doc\Image\configbus2.jpg)
+        
+        这时Spring Cloud Bus做配置更新步骤如下:
+        
+        - 提交代码触发post请求给bus/refresh
+        - server端接收到请求并发送给Spring Cloud Bus
+        - Spring Cloud bus接到消息并通知给其它客户端
+        - 其它客户端接收到通知，请求Server端获取最新配置
+        - 全部客户端均获取到最新的配置
+    
+    以上方式，需要安装Git, RabbitMQ（或其他消息队列）来对业务进行支持，架构复杂，不便于部署，待讨论？？？？
+    
+    - 基于FileSystem的配置文件管理
+    
+        将配置文件放到本地文件系统，在config-server中指定client-clienet的searchLocations
+        ```
+            spring:
+              application:
+                  name: config-server
+            
+              cloud:
+                config:
+                  server:
+                    native:
+                      searchLocations: classpath:/shared
+              profiles:
+                active: native
+            
+        ``` 
+        该方式无法做到自动刷新配置，每次更改配置中心的各个客户端的配置，需要对各个客户端重启以重新从配置中心读取配置，虽然繁琐，但部署方便。
+        
+* 基于纯文本的配置管理：
+
+
+
+
 
 
 

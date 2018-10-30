@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class ConfigController {
 
-    @Value(value = "\${name}")
+    @Value(value = "\${name.test}")
     private val name: String = ""
 
     @RequestMapping(value = ["/name"],method = [RequestMethod.GET])
