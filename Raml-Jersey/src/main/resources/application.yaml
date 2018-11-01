@@ -25,23 +25,6 @@ spring:
     hibernate:
       ddl-auto: update
 
-  thymeleaf:
-    mode: HTML5
-    encoding: utf-8
-    cache: false
-
-# JWT 认证配置
-jwt:
-  header: Authorization
-  secret: mySecret
-  expiration: 10 # token的过期时间 /s
-  tokenHead: "Bearer "
-  route:
-    authentication:
-      path: /auth/login
-      refresh: /auth/refresh
-      register: auth/register
-
 #  datasource:
 #    driver-class-name: com.mysql.jdbc.Driver
 #    url: jdbc:mysql://47.98.225.183:3306/datiip?useUnicode=true&useSSL=false

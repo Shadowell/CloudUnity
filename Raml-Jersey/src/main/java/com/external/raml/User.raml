@@ -1,0 +1,39 @@
+#%RAML 1.0
+  title: Book API
+  baseUri: http://api.datiip.com/
+  version: v1
+  types:
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+        telephone:
+          type: number
+        age:
+          type: number
+          minimum: 0
+          maximum: 150
+    ResponseEntity:
+      type: object
+      properties:
+        code: number
+        message: string
+
+  /auser:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: User
+        500:
+          body:
+            application/json:
+              type: ResponseEntity
+    post:
+      responses:
+        200:
+          body:
+            application/json:
+              type: ResponseEntity
