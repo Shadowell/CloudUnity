@@ -9,7 +9,7 @@ public interface User {
 
   void setTelephone(Number telephone);
 
-  Number getAge();
+  int getAge();
 
-  void setAge(Number age);
+  void setAge(int age);
 }

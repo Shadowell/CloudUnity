@@ -1,18 +1,12 @@
 package com.shadowell.cloud.ramlJersey.service
 
-
 import com.external.api.Auser
 import com.external.api.ResponseEntityImpl
-import com.external.api.User
 import com.external.api.UserImpl
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import org.springframework.stereotype.Component
-import org.springframework.stereotype.Service
-import javax.ws.rs.GET
-import javax.ws.rs.POST
-import javax.ws.rs.Path
-import javax.ws.rs.Produces
+
 
 @Component
 class UserService {

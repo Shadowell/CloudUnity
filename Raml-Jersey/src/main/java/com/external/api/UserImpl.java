@@ -1,8 +1,10 @@
 package com.external.api;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-public class UserImpl implements User {
+public class UserImpl implements com.external.api.User {
   @NotNull
   private String name;
 
@@ -10,7 +12,9 @@ public class UserImpl implements User {
   private Number telephone;
 
   @NotNull
-  private Number age;
+  @Min(0)
+  @Max(150)
+  private int age;
 
   public String getName() {
     return this.name;
@@ -28,11 +32,11 @@ public class UserImpl implements User {
     this.telephone = telephone;
   }
 
-  public Number getAge() {
+  public int getAge() {
     return this.age;
   }
 
-  public void setAge(Number age) {
+  public void setAge(int age) {
     this.age = age;
   }
 }

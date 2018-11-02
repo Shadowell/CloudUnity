@@ -1,23 +1,19 @@
 package com.shadowell.cloud.ramlJersey.controller
 
-
 import com.external.api.Auser
-import com.external.api.ResponseEntityImpl
 import com.shadowell.cloud.ramlJersey.service.UserService
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
-import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
 import javax.ws.rs.GET
 import javax.ws.rs.POST
 import javax.ws.rs.Path
 import javax.ws.rs.Produces
 
+
+
 @Component
-@Path("/auser")
 class UserController @Autowired constructor(private val userService: UserService) : Auser{
 
     companion object {
@@ -25,14 +21,14 @@ class UserController @Autowired constructor(private val userService: UserService
         private val logger: Logger = LogManager.getLogger(UserController::class)
     }
 
-    @GET
-    @Produces("application/json")
+    //@GET
+    //@Produces("application/json")
     override fun getAuser(): Auser.GetAuserResponse {
         return userService.getAuser()
     }
 
-    @POST
-    @Produces("application/json")
+//    @POST
+//    @Produces("application/json")
     override fun postAuser(): Auser.PostAuserResponse {
         return userService.addAuser()
     }

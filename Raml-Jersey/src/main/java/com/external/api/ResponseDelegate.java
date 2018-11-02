@@ -70,43 +70,12 @@ public class ResponseDelegate extends Response {
   }
 
   @Override
-  public boolean hasLink(String p0) {
-    return this.delegate.hasLink(p0);
-  }
+  public Object getEntity() {
+    return this.entity;}
 
   @Override
-  public String getHeaderString(String p0) {
-    return this.delegate.getHeaderString(p0);
-  }
-
-  @Override
-  public boolean hasEntity() {
-    return this.delegate.hasEntity();
-  }
-
-  @Override
-  public MultivaluedMap<String, Object> getMetadata() {
-    return this.delegate.getMetadata();
-  }
-
-  @Override
-  public Map<String, NewCookie> getCookies() {
-    return this.delegate.getCookies();
-  }
-
-  @Override
-  public Link.Builder getLinkBuilder(String p0) {
-    return this.delegate.getLinkBuilder(p0);
-  }
-
-  @Override
-  public MultivaluedMap<String, String> getStringHeaders() {
-    return this.delegate.getStringHeaders();
-  }
-
-  @Override
-  public boolean bufferEntity() {
-    return this.delegate.bufferEntity();
+  public Response.StatusType getStatusInfo() {
+    return this.delegate.getStatusInfo();
   }
 
   @Override
@@ -135,23 +104,13 @@ public class ResponseDelegate extends Response {
   }
 
   @Override
-  public MediaType getMediaType() {
-    return this.delegate.getMediaType();
+  public String getHeaderString(String p0) {
+    return this.delegate.getHeaderString(p0);
   }
 
   @Override
-  public Set<Link> getLinks() {
-    return this.delegate.getLinks();
-  }
-
-  @Override
-  public StatusType getStatusInfo() {
-    return this.delegate.getStatusInfo();
-  }
-
-  @Override
-  public Link getLink(String p0) {
-    return this.delegate.getLink(p0);
+  public MultivaluedMap<String, String> getStringHeaders() {
+    return this.delegate.getStringHeaders();
   }
 
   @Override
@@ -160,8 +119,49 @@ public class ResponseDelegate extends Response {
   }
 
   @Override
-  public Object getEntity() {
-    return this.entity;}
+  public MultivaluedMap<String, Object> getMetadata() {
+    return this.delegate.getMetadata();
+  }
+
+  @Override
+  public Set<Link> getLinks() {
+    return this.delegate.getLinks();
+  }
+
+  @Override
+  public boolean hasEntity() {
+    return this.delegate.hasEntity();
+  }
+
+  @Override
+  public boolean hasLink(String p0) {
+    return this.delegate.hasLink(p0);
+  }
+
+  @Override
+  public Link getLink(String p0) {
+    return this.delegate.getLink(p0);
+  }
+
+  @Override
+  public MediaType getMediaType() {
+    return this.delegate.getMediaType();
+  }
+
+  @Override
+  public boolean bufferEntity() {
+    return this.delegate.bufferEntity();
+  }
+
+  @Override
+  public Map<String, NewCookie> getCookies() {
+    return this.delegate.getCookies();
+  }
+
+  @Override
+  public Link.Builder getLinkBuilder(String p0) {
+    return this.delegate.getLinkBuilder(p0);
+  }
 
   public static class HeaderBuilderBase {
     protected final Map<String, String> headerMap;
@@ -170,7 +170,7 @@ public class ResponseDelegate extends Response {
       this.headerMap = new HashMap<>();
     }
 
-    public ResponseBuilder toResponseBuilder(final ResponseBuilder builder) {
+    public Response.ResponseBuilder toResponseBuilder(final Response.ResponseBuilder builder) {
       for (String s : headerMap.keySet())  {
         if (headerMap.get(s) != null )  {
           builder.header(s, headerMap.get(s));;
