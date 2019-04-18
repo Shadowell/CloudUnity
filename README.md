@@ -1,6 +1,6 @@
 # Spring Boot & Spring Cloud 
 
-本项目内容为Spring Boot 和 Spring Cloud的程序样例。
+本项目内容为Spring Boot 和 Spring Cloud的程序样例-参考。
 
     开发语言：Kotlin   
     构建工具：Gradle
