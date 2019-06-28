@@ -8,7 +8,7 @@ apply plugin: 'war'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'kotlin-spring'
-apply plugin: 'docker'
+apply plugin: 'com.google.protobuf'
 
 sourceCompatibility = 1.8
 compileKotlin {
@@ -43,7 +43,7 @@ dependencyManagement {
 		dependency "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$fasterxmlVersion"
         dependency "org.projectlombok:lombok:$lombokVersion"
         dependency "junit:junit:$junitVersion"
-
+        dependency "com.google.protobuf:protobuf-java:$protobufVersion"
 	}
 }
 configurations {
@@ -68,33 +68,35 @@ dependencies {
 	compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml'
     compile 'org.projectlombok:lombok'
     compile 'junit:junit'
-
+    compile 'com.google.protobuf:protobuf-java'
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
-
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 }
 
-jar {
-    baseName 'customer-service'
-    version '1.0.0'
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:${protobufCompilerVersion}"
+    }
+    generatedFilesBaseDir = "$projectDir/src/main/java"
+    generateProtoTasks {
+        all().each { task ->
+            task.plugins {
+                javalite {
+                    outputSubDir = "$projectDir/src/main/java"
+                }
+            }
+        }
+    }
 }
 
-distDocker {
-    baseImage 'openjdk'
-    maintainer 'shadowell'
-}
-
-task dockerBuilder(type: Docker) {
-    applicationName = jar.baseName
-    tagVersion = jar.version
-    volume('/tmp')
-    addFile("${jar.baseName}-${jar.version}.jar", "app.jar")
-    entryPoint(["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", 'app.jar'])
-    exposePort(8402)
-    doFirst {
-        copy {
-            from jar
-            into stageDir
+sourceSets {
+    main {
+        proto {
+            srcDir '$projectDir/src/main/protobuf'
+            include ('**/*.proto')
+        }
+        java{
+            srcDir '$projectDir/src/main/java'
         }
     }
 }

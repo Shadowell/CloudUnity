@@ -2,6 +2,7 @@ group 'com.air.cloudunity'
 version '1.0.0'
 
 subprojects {
+    apply plugin: 'application'
     apply plugin: 'maven'
     apply plugin: 'idea'
 
@@ -18,6 +19,12 @@ subprojects {
         jsonwebtokenVersion = '0.9.0'
         lombokVersion = '1.18.0'
         junitVersion = '4.8.2'
+
+        dockerVersion = '1.2'
+        protobufVersion = '3.8.0'
+        protobufGradlePluginVersion = '0.8.1'
+        protobufCompilerVersion = '3.2.0'
+        protobufGeneratorVersion = '3.0.0'
     }
 
     buildscript {
@@ -27,29 +34,13 @@ subprojects {
             classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
             classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
             classpath("org.jetbrains.kotlin:kotlin-noarg:${kotlinVersion}")
-        }
-
-        repositories {
-            mavenLocal()
-            mavenCentral()
-//            maven {
-//                url "http://nexus.datiip:8070/nexus/content/groups/public/"
-//            }
-            maven {
-                url "https://repo.spring.io/libs-milestone/"
-            }
+            classpath("se.transmode.gradle:gradle-docker:${dockerVersion}")
+            classpath("com.google.protobuf:protobuf-java:${protobufVersion}")
+            classpath("com.google.protobuf:protobuf-gradle-plugin:${protobufGradlePluginVersion}")
+            classpath("com.google.protobuf:protoc:${protobufCompilerVersion}")
+            classpath("com.google.protobuf:protoc-gen-javalite:${protobufGeneratorVersion}")
         }
     }
-
-    repositories {
-        mavenLocal()
-        mavenCentral()
-//        maven {
-//            url "http://nexus.datiip:8070/nexus/content/groups/public/"
-//        }
-        maven {
-            url "https://repo.spring.io/libs-milestone/"
-        }
-    }
+    
 }
 

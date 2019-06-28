@@ -1,4 +1,5 @@
 rootProject.name = 'CloudUnity'
+include 'Cloud-Core'
 include 'Eureka-Server'
 include 'Zuul-Server'
 include 'Config-Server'

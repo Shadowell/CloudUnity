@@ -8,6 +8,7 @@ apply plugin: 'war'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'kotlin-spring'
+apply plugin: 'docker'
 
 sourceCompatibility = 1.8
 compileKotlin {
@@ -64,3 +65,44 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 }
 
+jar {
+    baseName 'product-service'
+    version '1.0.0'
+}
+
+distDocker {
+    baseImage 'openjdk'
+    maintainer 'shadowell'
+}
+
+task dockerBuilder(type: Docker) {
+    applicationName = jar.baseName
+    tagVersion = jar.version
+    volume('/tmp')
+    addFile("${jar.baseName}-${jar.version}.jar", "app.jar")
+    entryPoint(["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", 'app.jar'])
+    exposePort(8401)
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
+    }
+}
+
+// 使用Docker File 构建docker镜像
+//task buildDocker(type: Docker) {
+//    applicationName = jar.baseName
+//    tagVersion = jar.version
+//    dockerfile = file('Dockerfile')
+//    doFirst {
+//        copy {
+//            from jar
+//            into stageDir
+//        }
+//    }
+//}
+
+//applicationDistribution.from('resources') {
+//    into "config/product-service"
+//}

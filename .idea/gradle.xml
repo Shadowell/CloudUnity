@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="LOCAL" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="D:/Apache/gradle/gradle-5.0" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Cloud-Core" />
+            <option value="$PROJECT_DIR$/Config-Client" />
+            <option value="$PROJECT_DIR$/Config-Server" />
+            <option value="$PROJECT_DIR$/Customer-Service" />
+            <option value="$PROJECT_DIR$/Eureka-Server" />
+            <option value="$PROJECT_DIR$/Product-Service" />
+            <option value="$PROJECT_DIR$/Proxy-Server" />
+            <option value="$PROJECT_DIR$/Raml-Jersey" />
+            <option value="$PROJECT_DIR$/Security-Server" />
+            <option value="$PROJECT_DIR$/Zuul-Server" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

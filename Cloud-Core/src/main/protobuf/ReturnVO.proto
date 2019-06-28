@@ -1,0 +1,6 @@
+syntax = "proto3";
+message ReturnVO {
+    string code = 1;
+    string message = 2;
+    string data = 3;
+}
