@@ -77,12 +77,12 @@ protobuf {
     protoc {
         artifact = "com.google.protobuf:protoc:${protobufCompilerVersion}"
     }
-    generatedFilesBaseDir = "$projectDir/src/main/java"
+    generatedFilesBaseDir = "$projectDir/src"
     generateProtoTasks {
         all().each { task ->
-            task.plugins {
-                javalite {
-                    outputSubDir = "$projectDir/src/main/java"
+            task.builtins {
+                java {
+                    outputSubDir = "$projectDir/src/main/java/models"
                 }
             }
         }
@@ -92,8 +92,7 @@ protobuf {
 sourceSets {
     main {
         proto {
-            srcDir '$projectDir/src/main/protobuf'
-            include ('**/*.proto')
+            srcDir 'src/main/proto'
         }
         java{
             srcDir '$projectDir/src/main/java'

@@ -22,7 +22,7 @@ subprojects {
 
         dockerVersion = '1.2'
         protobufVersion = '3.8.0'
-        protobufGradlePluginVersion = '0.8.1'
+        protobufGradlePluginVersion = '0.8.4'
         protobufCompilerVersion = '3.2.0'
         protobufGeneratorVersion = '3.0.0'
     }

@@ -1,4 +1,4 @@
-package com.shadowell.cloud.customerService.utils
+package com.shadowell.cloud.core.utils
 
 enum class Result(code: Int, message: String) {
 

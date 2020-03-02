@@ -1,7 +1,7 @@
 syntax = "proto2";
-package com.dy.messagepackdemo.protobuffer.model;
+package com.shadowell.protobuffer.model;
 
-option java_package = "com.dy.messagepackdemo.protobuffer.model";
+option java_package = "com.shadowell.protobuffer.model";
 option java_outer_classname = "ResponsePB";
 
 message Tab {
@@ -11,7 +11,6 @@ message Tab {
 message ItemData {
     required string sname = 1;
     required string packageid = 2;
-    ...
     repeated Tab tabs = 45;
 }
 message DataItem {

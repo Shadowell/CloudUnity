@@ -6,17 +6,14 @@
             {//共有字段45个
                 "sname":"\u5fae\u533b",
                 "packageid":"330611",
-                …
                 "tabs":[
                     {
                         "type":1,
                         "f":"abc"
-                    },
-                    …
+                    }
                 ]
             }
-        },
-        …
+        }
     ],
     "hasNextPage":true,
     "dirtag":"soft"
