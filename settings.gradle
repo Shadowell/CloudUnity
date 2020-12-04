@@ -7,7 +7,9 @@ include 'Config-Client'
 include 'Security-Server'
 include 'Product-Service'
 include 'Customer-Service'
+include 'Wechat-Service'
 include 'Proxy-Server'
 include 'Raml-Jersey'
+
 
 

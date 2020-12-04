@@ -1,0 +1,29 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
+server:
+  port: 80
+
+spring:
+  application:
+    name: wechat-service
+
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@192.192.188.130:1521/test
+    username: datiip
+    password: datiip
+    maximum-pool-size: 30
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+wechat:
+  # 定时任务调度时间
+  scheduleHour: 08
+
+
